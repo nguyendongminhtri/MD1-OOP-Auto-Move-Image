@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img id="myImage" src="image/tank_right.png" height="100" width="100"/></body>
+</html>
+<script>
+    let myImage = document.getElementById('myImage');
+    // function initImage() {
+    //     myImage.style.position = 'absolute';
+    //     myImage.style.left = 0 + 'px';
+    // }
+    // initImage();
+    // function moveRight() {
+    //     myImage.style.left = parseInt(myImage.style.left)+20+'px';
+    //     if(parseInt(myImage.style.left)<window.innerWidth){
+    //         setTimeout(moveRight,100)
+    //     }
+    // }
+    // moveRight()
+    class MyImage {
+        constructor(image) {
+            this.image = image;
+            console.log('this.image = ', this.image)
+        }
+        initImage(){
+            this.image.style.position = 'relative';
+            this.image.style.left = 0 + 'px';
+        }
+        moveRight(){
+            console.log('call')
+            this.image.style.left = parseInt(this.image.style.left)+20+'px';
+        }
+    }
+    let image = new MyImage(myImage);
+    image.initImage();
+    image.moveRight();
+    function move() {
+        image.moveRight();
+        if(parseInt(myImage.style.left)<window.innerWidth){
+            setTimeout(move, 100)
+        }
+    }
+    move();
+</script>
